@@ -1,6 +1,3 @@
-# Made by Ethan Knotts
-# Please don't steal my code
-
 # Setup
 from mcpi import minecraft
 from mcpi import block
@@ -40,6 +37,9 @@ def console():
     print("2) Frost Walker")
     print("3) TNT Walker")
     print("4) Custom Walker")
+    print("5) Save Game")
+    print("6) Restore Game")
+    print("7) Chat")
     print("-=-=-=-=-");
     
     print("Enter an option: ")
@@ -64,6 +64,17 @@ def console():
         option_4 = True
         print("-=-=-=-=-")
         print("Running Custom Walker")
+    elif x == "5":
+        print("Saving Game...")
+        save()
+    elif x == "6":
+        print("Restoring Game...")
+        restore()
+    elif x == "7":
+        print("Insert your message: ")
+        z = input()
+        chat(z)
+        print("-=-=-=-=-")
     else:
         print("Enter a valid option")
         
@@ -145,6 +156,17 @@ def custom_walker(block):
     if block_beneath != air:
         mc.setBlock(x, y - 1, z, block)
 
+def save():
+    mc.saveCheckpoint()
+    
+    
+def restore():
+    mc.restoreCheckpoint()
+    
+    
+def chat(message):
+    mc.postToChat(message)
+    
 
 # Draw
 while True: 
