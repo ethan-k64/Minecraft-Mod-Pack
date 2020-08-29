@@ -40,11 +40,10 @@ def console():
     print("5) Save Game")
     print("6) Restore Game")
     print("7) Chat")
+    print("8) Teleport")
     print("-=-=-=-=-");
     
-    print("Enter an option: ")
-    
-    x = input()
+    x = input("Enter an option: ")
     
     print("-=-=-=-=-");
     
@@ -71,15 +70,20 @@ def console():
         print("Restoring Game...")
         restore()
     elif x == "7":
-        print("Insert your message: ")
-        z = input()
+        z = input("Insert your message: ")
         chat(z)
+    elif x == "8":
+        tele_x = input("Enter the x coordinate: ")
         print("-=-=-=-=-")
+        tele_y = input("Enter the y coordinate: ")
+        print("-=-=-=-=-")
+        tele_z = input("Enter the z coordinate: ")
+        mc.player.setPos(tele_x, tele_y, tele_z)
     else:
         print("Enter a valid option")
         
     while option_1 == True:
-        auto_mine()
+        auto_mine()        
         
     while option_2 == True:
         frost_walker()
@@ -89,7 +93,6 @@ def console():
         
     while option_4 == True:
         custom_walker(custom)
-        
 
 def auto_mine():
     x, y, z = mc.player.getPos()
@@ -167,8 +170,7 @@ def restore():
 def chat(message):
     mc.postToChat(message)
     
-
-# Draw
+# Loop
 while True: 
     console()
     
